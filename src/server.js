@@ -9,7 +9,13 @@ const app = express();
 const PORT = process.env.PORT || 5050;
 
 app.use(express.json());
-app.use(cors());
+
+const corsOptions = {
+    origin: process.env.FRONTEND_URL,
+    optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 
 app.use('/api/tasks', router);
 
