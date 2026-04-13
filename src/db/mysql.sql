@@ -1,30 +1,23 @@
 -- File to store database creation commands
 
--- CREATE DATABASE todolist_db;
+-- Create the database only if it doesn't already exist
+CREATE DATABASE IF NOT EXISTS todolist_db;
 
--- SHOW DATABASES; -- "Verify the database was created"
+-- Select the database to work inside it
+USE todolist_db;
 
--- USE todolist_db; -- "Select the database to work inside it"
+-- Create the tasks table only if it doesn't already exist
+CREATE TABLE IF NOT EXISTS tasks (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    is_completed BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
--- CREATE TABLE tasks (
---     id INT AUTO_INCREMENT PRIMARY KEY,
---     title VARCHAR(255) NOT NULL,
---     description TEXT,
---     is_completed BOOLEAN DEFAULT FALSE,
---     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
--- );
-
-
--- INSERT INTO tasks (title, description) VALUES ('Learn Backend', 'Connect Node.js to my new MySQL database.');
-
-
--- SHOW TABLES; -- "What tables exist in this database?"
-
--- DESCRIBE tasks; -- "How is this specific table built?"
-
--- SELECT * FROM tasks; -- "What information is saved inside this table?"
-
-
+-- Insert a starting todo
+INSERT INTO tasks (title, description) 
+VALUES ('Welcome to your cloud Todolist!', 'This is your first starting task to confirm the database is working properly.');
 
 
 
